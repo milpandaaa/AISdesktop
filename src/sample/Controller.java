@@ -32,7 +32,7 @@ public class Controller {
         buttonSuperUser.setOnAction(event -> {
             buttonSuperUser.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/search.fxml"));
+            loader.setLocation(getClass().getResource("/sample/layer/search.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {
@@ -51,7 +51,7 @@ public class Controller {
         buttonUser.setOnAction(event -> {
             buttonUser.getScene().getWindow().hide();
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/search.fxml"));
+            loader.setLocation(getClass().getResource("/sample/layer/search.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {

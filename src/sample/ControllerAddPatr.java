@@ -13,16 +13,14 @@ public class ControllerAddPatr extends ControllerSearch{
     private TextField textFieldAddPatr;
 
     @FXML
-    public void addPatr(){
+    public void add(){
         DatabaseHandler dbHandler = new DatabaseHandler();
 
         buttonAddPatrs.setOnAction(event -> {
             try {
                 dbHandler.addPatr(textFieldAddPatr.getText());
-            } catch (SQLException throwables) {
+            } catch (SQLException | ClassNotFoundException throwables) {
                 throwables.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
             }
         });
     }
