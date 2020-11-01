@@ -1,16 +1,10 @@
 package sample;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import java.sql.SQLException;
-
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.TilePane;
 
-public class ControllerAddName extends ControllerSearch{
+public class ControllerAddName extends ControllerSearch {
     @FXML
     private Button buttonAddNames;
 
@@ -18,16 +12,11 @@ public class ControllerAddName extends ControllerSearch{
     private TextField textFieldAddName;
 
     @FXML
-    public void add(){
+    public void add() {
         DatabaseHandler dbHandler = new DatabaseHandler();
 
-        buttonAddNames.setOnAction(event -> {
-            try {
-                dbHandler.addName(textFieldAddName.getText());
-            } catch (SQLException | ClassNotFoundException throwables) {
-                throwables.printStackTrace();
-            }
-        });
+        buttonAddNames.setOnAction(event -> dbHandler.addName(textFieldAddName.getText()));
+
 //        TilePane r = new TilePane();
 //        Alert a = new Alert(Alert.AlertType.NONE);
 //        EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {

@@ -1,27 +1,16 @@
 package sample;
 
-import java.sql.*;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
-public class DatabaseHandler extends Configs {
-    Connection dbConnection;
+public class DatabaseHandler {
 
-    public Connection getDbConnection() throws ClassNotFoundException, SQLException {
-        String connectionString = "jdbc:mysql://" + dbHost + ":" + dbPost + "/" + dbName + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        dbConnection = DriverManager.getConnection(connectionString, dbUser, dbPass);
-        return dbConnection;
-
-    }
-
-    public void addName(String name) throws SQLException, ClassNotFoundException {
+    public void addName(String name) {
         String insert = "INSERT INTO " + Const.NAME_TABLE + "("
                 + Const.NAME + ")" +
                 "VALUES(?)";
 
-        PreparedStatement prSt = getDbConnection().prepareStatement(insert);
-        try {
+        try(PreparedStatement prSt = DatabaseConnection.getInstance().getConnection().prepareStatement(insert)) {
             prSt.setString(1, name);
             prSt.executeUpdate();
         } catch (SQLException e) {
@@ -29,13 +18,12 @@ public class DatabaseHandler extends Configs {
         }
     }
 
-    public void addPatr(String name) throws SQLException, ClassNotFoundException {
+    public void addPatr(String name) {
         String insert = "INSERT INTO " + Const.PATRONYMIC_TABLE + "("
                 + Const.PATRONYMIC + ")" +
                 "VALUES(?)";
 
-        PreparedStatement prSt = getDbConnection().prepareStatement(insert);
-        try {
+        try(PreparedStatement prSt = DatabaseConnection.getInstance().getConnection().prepareStatement(insert)) {
             prSt.setString(1, name);
             prSt.executeUpdate();
         } catch (SQLException e) {
@@ -50,7 +38,7 @@ public class DatabaseHandler extends Configs {
                            String date_of_preparing_report, Integer office_of_preparing_report, String name_of_preparing_report, Integer id_article,
                            String date_of_decision, String decision, Integer office_of_decision, String name_of_decision, Integer punishment, Integer sum,
                            String date_of_entry_into_force,
-                           String date_sentence_enforcement, Integer amount) throws SQLException, ClassNotFoundException {
+                           String date_sentence_enforcement, Integer amount){
         String insert = "INSERT INTO " + Const.CARD_TABLE + "("
                 + Const.CARD_ID + "," + Const.CARD_LAST_NAME + "," + Const.CARD_FIRST_NAME + "," + Const.PATRONYMIC + "," + Const.CARD_DATE_OF_BIRTH + "," + Const.GENDER + "," + Const.CARD_COUNTY + "," + Const.CARD_REGION + "," + Const.CARD_OUTDOORS + ","
                 + Const.CARD_DATE_OF_COMMISSION + "," + Const.CARD_PLACE_OF_COMMISSION + "," +
@@ -60,8 +48,7 @@ public class DatabaseHandler extends Configs {
                 Const.CARD_DATE_OF_ENTRY_INTO_FORCE + ","
                 + Const.CARD_DATE_SENTENCE_ENFORCEMENT + "," + Const.CARD_AMOUNT + ")" +
                 "VALUES(?, ?, ?, ?, ?, ?,?, ?, ?,?, ?, ?, ?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?)";
-        PreparedStatement prSt = getDbConnection().prepareStatement(insert);
-        try {
+        try (PreparedStatement prSt = DatabaseConnection.getInstance().getConnection().prepareStatement(insert)) {
             prSt.setString(1, String.valueOf(id));
             prSt.setString(2, last_name);
             prSt.setString(3, String.valueOf(first_name));
@@ -96,16 +83,15 @@ public class DatabaseHandler extends Configs {
         }
     }
 
-    public void addReferral(Integer card, String dateDeparture,Integer officeDeparture,
-                            String dateArrival,Integer officeArrival) throws SQLException, ClassNotFoundException {
+    public void addReferral(Integer card, String dateDeparture, Integer officeDeparture,
+                            String dateArrival, Integer officeArrival) {
         String insert = "INSERT INTO " + Const.REFERRAL_TABLE + "("
-                + Const.REFERRAL_CARD +  "," + Const.REFERRAL_DATE_DEPARTURE +  "," +
-                Const.REFERRAL_OFFICE_DEPARTURE +  "," + Const.REFERRAL_DATE_ARRIVAL+  "," +
-                Const.REFERRAL_OFFICE_ARRIVAL +")" +
+                + Const.REFERRAL_CARD + "," + Const.REFERRAL_DATE_DEPARTURE + "," +
+                Const.REFERRAL_OFFICE_DEPARTURE + "," + Const.REFERRAL_DATE_ARRIVAL + "," +
+                Const.REFERRAL_OFFICE_ARRIVAL + ")" +
                 "VALUES(?,?,?,?,?)";
 
-        PreparedStatement prSt = getDbConnection().prepareStatement(insert);
-        try {
+        try (PreparedStatement prSt = DatabaseConnection.getInstance().getConnection().prepareStatement(insert)) {
             prSt.setString(1, String.valueOf(card));
             prSt.setString(1, dateDeparture);
             prSt.setString(1, String.valueOf(officeDeparture));

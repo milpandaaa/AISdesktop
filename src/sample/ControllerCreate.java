@@ -4,8 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-import java.sql.SQLException;
-
 public class ControllerCreate extends ControllerSearch {
     @FXML
     private TextField textFieldLastName;
@@ -113,6 +111,8 @@ public class ControllerCreate extends ControllerSearch {
     @FXML
     private Button buttonAdd;
 
+    private static final DatabaseHandler dbHandler = new DatabaseHandler();
+
     @Override
     protected void initialize() {
 
@@ -120,30 +120,24 @@ public class ControllerCreate extends ControllerSearch {
 
     @FXML
     private void add() {
-        DatabaseHandler dbHandler = new DatabaseHandler();
-
         buttonAdd.setOnAction(event -> {
-            try {
-                String id = textFieldID1.getText() + textFieldID2.getText() + textFieldID3.getText() + textFieldID4.getText();
-                dbHandler.createCard(Integer.parseInt(id), textFieldLastName.getText(),
-                        Integer.parseInt(textFieldFirstName.getText()), Integer.parseInt(textFieldPatronymic.getText()),
-                        textFieldDateOfBirth.getText(), Integer.parseInt(textFieldGender.getText()),
-                        Integer.parseInt(textFieldCountry.getText()), Integer.parseInt(textFieldRegion.getText()),
-                        textFieldOutdoors.getText(), textFieldDateOfCommission.getText(), textFieldPlaceOfCommission.getText(),
-                        textFieldDateOfInitiation.getText(), Integer.parseInt(textFieldOfficeOfInitiation.getText()),
-                        textFieldNameOfInitiation.getText(), textFieldDateOfPreparingReport.getText(),
-                        Integer.parseInt(textFieldOfficeOfPreparingReport.getText()),
-                        textFieldNameOfPreparingReport.getText(), Integer.parseInt(textFieldArticle.getText()),
-                        textFieldDateOfDecision.getText(), textFieldDecision.getText(),
-                        Integer.parseInt(textFieldOfficeOfDecision.getText()), textFieldNameOfDecision.getText(),
-                        Integer.parseInt(textFieldPunishment.getText()), Integer.parseInt(textFieldPunishmentSum.getText()),
-                        textFieldDateOfEntryIntoForce.getText(), textFieldDateSentenceEnforcement.getText(),
-                        Integer.parseInt(textFieldAmount.getText()));
-                dbHandler.addReferral(Integer.parseInt(id), textFieldDateDeparture.getText(), Integer.parseInt(textFieldOfficeDeparture.getText()),
-                        textFieldDateArrival.getText(), Integer.parseInt(textFieldOfficeArrival.getText()));
-            } catch (SQLException | ClassNotFoundException e) {
-                e.printStackTrace();
-            }
+            String id = textFieldID1.getText() + textFieldID2.getText() + textFieldID3.getText() + textFieldID4.getText();
+            dbHandler.createCard(Integer.parseInt(id), textFieldLastName.getText(),
+                    Integer.parseInt(textFieldFirstName.getText()), Integer.parseInt(textFieldPatronymic.getText()),
+                    textFieldDateOfBirth.getText(), Integer.parseInt(textFieldGender.getText()),
+                    Integer.parseInt(textFieldCountry.getText()), Integer.parseInt(textFieldRegion.getText()),
+                    textFieldOutdoors.getText(), textFieldDateOfCommission.getText(), textFieldPlaceOfCommission.getText(),
+                    textFieldDateOfInitiation.getText(), Integer.parseInt(textFieldOfficeOfInitiation.getText()),
+                    textFieldNameOfInitiation.getText(), textFieldDateOfPreparingReport.getText(),
+                    Integer.parseInt(textFieldOfficeOfPreparingReport.getText()),
+                    textFieldNameOfPreparingReport.getText(), Integer.parseInt(textFieldArticle.getText()),
+                    textFieldDateOfDecision.getText(), textFieldDecision.getText(),
+                    Integer.parseInt(textFieldOfficeOfDecision.getText()), textFieldNameOfDecision.getText(),
+                    Integer.parseInt(textFieldPunishment.getText()), Integer.parseInt(textFieldPunishmentSum.getText()),
+                    textFieldDateOfEntryIntoForce.getText(), textFieldDateSentenceEnforcement.getText(),
+                    Integer.parseInt(textFieldAmount.getText()));
+            dbHandler.addReferral(Integer.parseInt(id), textFieldDateDeparture.getText(), Integer.parseInt(textFieldOfficeDeparture.getText()),
+                    textFieldDateArrival.getText(), Integer.parseInt(textFieldOfficeArrival.getText()));
         });
     }
 }

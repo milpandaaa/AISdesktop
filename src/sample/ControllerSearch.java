@@ -3,24 +3,19 @@ package sample;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+import javafx.util.Callback;
 
 import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.function.Predicate;
-
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
-import javafx.util.Callback;
 
 public class ControllerSearch {
     @FXML
@@ -205,31 +200,29 @@ public class ControllerSearch {
 
     @FXML
     private void initData() throws SQLException, ClassNotFoundException {
-        DatabaseHandler dbHandler = new DatabaseHandler();
         String querry = "SELECT * FROM card";
-        Statement statement = dbHandler.getDbConnection().createStatement();
-        ResultSet resultSet = statement.executeQuery(querry);
-        while (resultSet.next()) {
-            Integer id = resultSet.getInt(Const.CARD_ID);
-            Integer first_name = resultSet.getInt(Const.CARD_FIRST_NAME);
-            Integer patronymic = resultSet.getInt(Const.CARD_PATRONYMIC);
-            String last_name = resultSet.getString(Const.CARD_LAST_NAME);
-            String date_of_birth = resultSet.getString(Const.CARD_DATE_OF_BIRTH);
-            String name = last_name + " " + seachDictionaryWord(Const.NAME_TABLE, Const.NAME, first_name) + " " + seachDictionaryWord(Const.PATRONYMIC_TABLE, Const.PATRONYMIC, patronymic) + ", " + date_of_birth;
-            data.add(new ModelTable(id, name));
+        try (Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
+             ResultSet resultSet = statement.executeQuery(querry)) {
+            while (resultSet.next()) {
+                Integer id = resultSet.getInt(Const.CARD_ID);
+                Integer first_name = resultSet.getInt(Const.CARD_FIRST_NAME);
+                Integer patronymic = resultSet.getInt(Const.CARD_PATRONYMIC);
+                String last_name = resultSet.getString(Const.CARD_LAST_NAME);
+                String date_of_birth = resultSet.getString(Const.CARD_DATE_OF_BIRTH);
+                String name = last_name + " " + searchDictionaryWord(Const.NAME_TABLE, Const.NAME, first_name) + " " + searchDictionaryWord(Const.PATRONYMIC_TABLE, Const.PATRONYMIC, patronymic) + ", " + date_of_birth;
+                data.add(new ModelTable(id, name));
+            }
         }
-        resultSet.close();
     }
 
-    private String seachDictionaryWord(String table, String nameColumn, Integer valueColumn) throws SQLException, ClassNotFoundException {
-        DatabaseHandler dbHandler = new DatabaseHandler();
-        String querry = "SELECT " + nameColumn + " FROM " + table + " where id_" + nameColumn + " = " + valueColumn;
-        Statement statement = dbHandler.getDbConnection().createStatement();
-        ResultSet resultSet = statement.executeQuery(querry);
-        resultSet.next();
-        String answer = resultSet.getString(nameColumn);
-        resultSet.close();
-        return answer;
+    private String searchDictionaryWord(String table, String nameColumn, Integer valueColumn) throws SQLException {
+        String query = "SELECT " + nameColumn + " FROM " + table + " where id_" + nameColumn + " = " + valueColumn;
+        try (Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
+            resultSet.next();
+            String answer = resultSet.getString(nameColumn);
+            return answer;
+        }
     }
 
     private void searchOnTableId() {
