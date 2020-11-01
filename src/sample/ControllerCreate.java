@@ -140,4 +140,13 @@ public class ControllerCreate extends ControllerSearch {
                     textFieldDateArrival.getText(), Integer.parseInt(textFieldOfficeArrival.getText()));
         });
     }
+
+    Integer parse(String s){
+        try{
+            return Integer.valueOf(s);
+        }catch (NumberFormatException ex){
+            System.err.println("Не могу распрасить значение" + s);
+            return null;
+        }
+    }
 }

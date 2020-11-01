@@ -49,10 +49,10 @@ public class DatabaseHandler {
                 + Const.CARD_DATE_SENTENCE_ENFORCEMENT + "," + Const.CARD_AMOUNT + ")" +
                 "VALUES(?, ?, ?, ?, ?, ?,?, ?, ?,?, ?, ?, ?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?)";
         try (PreparedStatement prSt = DatabaseConnection.getInstance().getConnection().prepareStatement(insert)) {
-            prSt.setString(1, String.valueOf(id));
+            prSt.setInt(1, id);
             prSt.setString(2, last_name);
-            prSt.setString(3, String.valueOf(first_name));
-            prSt.setString(4, String.valueOf(patronymic));
+            prSt.setInt(3, first_name);
+            prSt.setInt(4, patronymic);
             prSt.setString(5, date_of_birth);
             prSt.setString(6, String.valueOf(gender));
             prSt.setString(7, String.valueOf(country));
