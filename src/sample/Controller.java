@@ -30,18 +30,28 @@ public class Controller {
     void loginSuperUser(){
         boolean privilege = true;
         buttonSuperUser.setOnAction(event -> {
-            buttonSuperUser.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/sample/layer/search.fxml"));
+            Parent root = null;
             try {
-                loader.load();
+                root = FXMLLoader.load(getClass().getResource("/sample/layer/search.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
+            Stage primaryStage = new Stage();
+            primaryStage.setTitle("Diary");
+            primaryStage.setScene(new Scene(root, 1024, 700));
+            primaryStage.show();
+//            buttonSuperUser.getScene().getWindow().hide();
+//            FXMLLoader loader = new FXMLLoader();
+//            loader.setLocation(getClass().getResource("/sample/layer/search.fxml"));
+//            try {
+//                loader.load();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            Parent root = loader.getRoot();
+//            Stage stage = new Stage();
+//            stage.setScene(new Scene(root));
+//            stage.showAndWait();
         });
     }
 

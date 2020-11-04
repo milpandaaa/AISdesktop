@@ -122,22 +122,22 @@ public class ControllerCreate extends ControllerSearch {
     private void add() {
         buttonAdd.setOnAction(event -> {
             String id = textFieldID1.getText() + textFieldID2.getText() + textFieldID3.getText() + textFieldID4.getText();
-            dbHandler.createCard(Integer.parseInt(id), textFieldLastName.getText(),
-                    Integer.parseInt(textFieldFirstName.getText()), Integer.parseInt(textFieldPatronymic.getText()),
-                    textFieldDateOfBirth.getText(), Integer.parseInt(textFieldGender.getText()),
-                    Integer.parseInt(textFieldCountry.getText()), Integer.parseInt(textFieldRegion.getText()),
+            dbHandler.createCard(parse(id), textFieldLastName.getText(),
+                    parse(textFieldFirstName.getText()), parse(textFieldPatronymic.getText()),
+                    textFieldDateOfBirth.getText(), parse(textFieldGender.getText()),
+                    parse(textFieldCountry.getText()), parse(textFieldRegion.getText()),
                     textFieldOutdoors.getText(), textFieldDateOfCommission.getText(), textFieldPlaceOfCommission.getText(),
-                    textFieldDateOfInitiation.getText(), Integer.parseInt(textFieldOfficeOfInitiation.getText()),
+                    textFieldDateOfInitiation.getText(), parse(textFieldOfficeOfInitiation.getText()),
                     textFieldNameOfInitiation.getText(), textFieldDateOfPreparingReport.getText(),
-                    Integer.parseInt(textFieldOfficeOfPreparingReport.getText()),
-                    textFieldNameOfPreparingReport.getText(), Integer.parseInt(textFieldArticle.getText()),
+                    parse(textFieldOfficeOfPreparingReport.getText()),
+                    textFieldNameOfPreparingReport.getText(), parse(textFieldArticle.getText()),
                     textFieldDateOfDecision.getText(), textFieldDecision.getText(),
-                    Integer.parseInt(textFieldOfficeOfDecision.getText()), textFieldNameOfDecision.getText(),
-                    Integer.parseInt(textFieldPunishment.getText()), Integer.parseInt(textFieldPunishmentSum.getText()),
+                    parse(textFieldOfficeOfDecision.getText()), textFieldNameOfDecision.getText(),
+                    parse(textFieldPunishment.getText()), parse(textFieldPunishmentSum.getText()),
                     textFieldDateOfEntryIntoForce.getText(), textFieldDateSentenceEnforcement.getText(),
-                    Integer.parseInt(textFieldAmount.getText()));
-            dbHandler.addReferral(Integer.parseInt(id), textFieldDateDeparture.getText(), Integer.parseInt(textFieldOfficeDeparture.getText()),
-                    textFieldDateArrival.getText(), Integer.parseInt(textFieldOfficeArrival.getText()));
+                    parse(textFieldAmount.getText()));
+            dbHandler.addReferral(parse(id), textFieldDateDeparture.getText(), parse(textFieldOfficeDeparture.getText()),
+                    textFieldDateArrival.getText(), parse(textFieldOfficeArrival.getText()));
         });
     }
 
