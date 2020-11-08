@@ -16,6 +16,9 @@ dependencies {
     // This dependency is used by the application.
     implementation("com.google.guava:guava:29.0-jre")
 
+    //db driver
+    implementation("mysql.guava:mysql-connector-java:8.0.22")
+
     // Use JUnit Jupiter API for testing.
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.2")
 
