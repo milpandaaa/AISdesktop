@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.layout.BorderPane?>
-<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="893.0" style="-fx-background-color: #F4F6FF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerCreate" >
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="893.0" style="-fx-background-color: #F4F6FF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerCreate">
         <center>
         <ScrollPane layoutX="131.0" layoutY="77.0" prefHeight="700.0" prefWidth="880.0" style="-fx-background-color: #F4F6FF;" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <content>
@@ -21,11 +18,7 @@
                             <Font name="Roboto Light" size="14.0" />
                         </font>
                   </TextField>
-                    <TextField fx:id="textFieldFirstName" alignment="TOP_LEFT" onAction="#add" prefHeight="25.0" prefWidth="180.0" promptText="Имя" style="-fx-background-color: #4F8A8B; -fx-background-radius: 5;" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="145.0">
-                        <font>
-                            <Font name="Roboto Light" size="14.0" />
-                        </font>
-                  </TextField>
+                    <ChoiceBox fx:id=""  onAction="#add" prefHeight="25.0" prefWidth="180.0"  style="-fx-background-color: #4F8A8B; -fx-background-radius: 5;" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="145.0"/>
                     <TextField fx:id="textFieldPatronymic" alignment="TOP_LEFT" onAction="#add" prefHeight="25.0" prefWidth="180.0" promptText="Отчество" style="-fx-background-color: #4F8A8B; -fx-background-radius: 5;" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="210.0">
                         <font>
                             <Font name="Roboto Light" size="14.0" />

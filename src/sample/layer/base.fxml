@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1024.0" style="-fx-background-color: #F4F6FF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerSearch">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1024.0" style="-fx-background-color: #F4F6FF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ControllerBase">
     <children>
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#99b7b7" height="2.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="1500.0" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0" />
         <AnchorPane prefHeight="400.0" prefWidth="130.0" style="-fx-background-color: #4F8A8B;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -66,5 +66,6 @@
                 </ImageView>
             </children>
         </AnchorPane>
+      <BorderPane fx:id="mainPane" prefHeight="700.0" prefWidth="893.0" AnchorPane.leftAnchor="131.0" AnchorPane.topAnchor="0.0" />
     </children>
 </AnchorPane>

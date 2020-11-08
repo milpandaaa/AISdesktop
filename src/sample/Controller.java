@@ -32,7 +32,7 @@ public class Controller {
         buttonSuperUser.setOnAction(event -> {
             Parent root = null;
             try {
-                root = FXMLLoader.load(getClass().getResource("/sample/layer/search.fxml"));
+                root = FXMLLoader.load(getClass().getResource("/sample/layer/base.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
             }

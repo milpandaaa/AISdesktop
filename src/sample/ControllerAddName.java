@@ -28,4 +28,7 @@ public class ControllerAddName extends ControllerSearch {
 //                };
 //        buttonAddNames.setOnAction(event);
     }
+    protected void initialize(){
+
+    }
 }

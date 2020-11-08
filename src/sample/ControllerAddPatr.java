@@ -17,4 +17,7 @@ public class ControllerAddPatr extends ControllerSearch {
     public void add() {
         buttonAddPatrs.setOnAction(event -> dbHandler.addPatr(textFieldAddPatr.getText()));
     }
+    protected void initialize(){
+
+    }
 }
