@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.layout.*?>
+
+      <BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="893.0" style="-fx-background-color: #F4F6FF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.itmo.app.ControllerStatistic" >
+         <center>
+            <BarChart fx:id="barChart" prefHeight="569.0" prefWidth="769.0" BorderPane.alignment="CENTER">
+              <xAxis>
+                <CategoryAxis label="Стадии ведения административного дела" prefHeight="113.0" prefWidth="422.0" tickLabelRotation="-89" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis label="Количество администативных дел" side="LEFT" upperBound="200.0" />
+              </yAxis>
+            </BarChart>
+         </center>
+      </BorderPane>

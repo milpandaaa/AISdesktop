@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="893.0" style="-fx-background-color: #F4F6FF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.itmo.app.ControllerAddName">
+    <center>
+        <AnchorPane prefHeight="700.0" prefWidth="894.0" style="-fx-background-color: #F4F6FF;">
+            <children>
+                <TextField fx:id="textFieldAddName" alignment="TOP_RIGHT" onAction="#add" prefHeight="25.0" prefWidth="179.0" promptText="Имя" style="-fx-background-color: #4F8A8B; -fx-background-radius: 15;" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0">
+                    <font>
+                        <Font name="Roboto Light" size="14.0" />
+                    </font>
+                </TextField>
+                <Button fx:id="buttonAddName" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#add" prefHeight="25.0" prefWidth="100.0" style="-fx-background-color: #4F8A8B; -fx-background-radius: 7;" text="Добавить" textFill="#f4f6ff" AnchorPane.bottomAnchor="40.0" AnchorPane.rightAnchor="50.0">
+                    <font>
+                        <Font name="Roboto Light" size="14.0" />
+                    </font>
+                </Button>
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>
