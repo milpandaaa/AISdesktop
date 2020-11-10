@@ -45,12 +45,5 @@ public class ControllerStatistic extends ControllerSearch {
         }
     }
 
-    //date_of_commission
-    //date_of_initiation
-    //date_of_preparing_report
-    //date_of_decision
-//    date_of_entry_into_force
-//    date_sentence_enforcement
-
 
 }

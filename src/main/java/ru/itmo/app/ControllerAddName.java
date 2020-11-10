@@ -22,7 +22,7 @@ public class ControllerAddName extends ControllerSearch {
 //        EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
 //                    public void handle(ActionEvent e)
 //                    {
-//                        a.setAlertType(Alert.AlertType.valueOf("Добавление прошло успешно"));
+//                        a.setAlertType(Alert.AlertType.valueOf(""));
 //                        a.show();
 //                    }
 //                };

@@ -25,10 +25,19 @@ public class Controller {
     @FXML
     private Button buttonUser;
 
+    static boolean privilege = false;
+
+    public boolean isPrivilege() {
+        return privilege;
+    }
+
+    public void setPrivilege(boolean privilege) {
+        Controller.privilege = privilege;
+    }
 
     @FXML
     void loginSuperUser(){
-        boolean privilege = true;
+        privilege = true;
         buttonSuperUser.setOnAction(event -> {
             Parent root = null;
             try {
@@ -37,40 +46,25 @@ public class Controller {
                 e.printStackTrace();
             }
             Stage primaryStage = new Stage();
-            primaryStage.setTitle("Diary");
+            primaryStage.setTitle("");
             primaryStage.setScene(new Scene(root, 1024, 700));
             primaryStage.show();
-//            buttonSuperUser.getScene().getWindow().hide();
-//            FXMLLoader loader = new FXMLLoader();
-//            loader.setLocation(getClass().getClassLoader().getResource("/sample/layer/search.fxml"));
-//            try {
-//                loader.load();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            Parent root = loader.getRoot();
-//            Stage stage = new Stage();
-//            stage.setScene(new Scene(root));
-//            stage.showAndWait();
         });
     }
 
     @FXML
     void loginUser(){
-        boolean privilege;
         buttonUser.setOnAction(event -> {
-            buttonUser.getScene().getWindow().hide();
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getClassLoader().getResource("layer/search.fxml"));
+            Parent root = null;
             try {
-                loader.load();
+                root = FXMLLoader.load(getClass().getClassLoader().getResource("layer/base.fxml"));
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.showAndWait();
+            Stage primaryStage = new Stage();
+            primaryStage.setTitle("");
+            primaryStage.setScene(new Scene(root, 1024, 700));
+            primaryStage.show();
         });
     }
 

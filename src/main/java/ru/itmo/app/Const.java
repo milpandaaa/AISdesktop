@@ -30,12 +30,12 @@ public class Const {
     public static final String CARD_DECISION = "decision";
     public static final String CARD_OFFICE_OF_DECISION = "office_of_decision";
     public static final String CARD_NAME_OF_DECISION = "name_of_decision";
-    public static final String CARD_PUNISHMENT = "punishment";//наказание
-    public static final String CARD_SUM = "sum";//сумма
+    public static final String CARD_PUNISHMENT = "punishment";
+    public static final String CARD_SUM = "sum";
 
     public static final String CARD_DATE_OF_ENTRY_INTO_FORCE = "date_of_entry_into_force";
     public static final String CARD_DATE_SENTENCE_ENFORCEMENT = "date_sentence_enforcement";
-    public static final String CARD_AMOUNT = "amount";//статус штрафа
+    public static final String CARD_AMOUNT = "amount";
 
     public static final String COUNTRY_TABLE = "countries";
 

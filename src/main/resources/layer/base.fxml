@@ -43,7 +43,7 @@
                     </image></ImageView>
                 <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="46.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="52.0" AnchorPane.topAnchor="80.0">
                     <image>
-                        <Image url="@../picture/create.png" />
+                        <Image  url="@../picture/create.png" />
                     </image></ImageView>
                 <Button fx:id="imageButtonAvatar" layoutX="75.0" layoutY="347.0" mnemonicParsing="false" onAction="#logout" prefHeight="45.0" prefWidth="45.0" style="-fx-background-radius: 45; -fx-background-color: #4F8A8B;" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="75.0">
                     <graphic>

@@ -1,5 +1,14 @@
 import org.gradle.api.JavaVersion.VERSION_1_8
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+tasks.withType(JavaCompile::class) {
+    options.encoding = "UTF-8"
+}
+
 plugins {
     // Apply the java plugin to add support for Java
     java
@@ -17,7 +26,7 @@ dependencies {
     implementation("com.google.guava:guava:29.0-jre")
 
     //db driver
-    implementation("mysql.guava:mysql-connector-java:8.0.22")
+    implementation("mysql:mysql-connector-java:8.0.22")
 
     // Use JUnit Jupiter API for testing.
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.2")
@@ -35,6 +44,8 @@ java {
     sourceCompatibility = VERSION_1_8
     targetCompatibility = VERSION_1_8
 }
+
+
 
 val test by tasks.getting(Test::class) {
     // Use junit platform for unit tests
