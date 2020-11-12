@@ -2,7 +2,14 @@ package ru.itmo.app;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import ru.itmo.app.service.ComboboxService;
+
+import java.util.List;
+
+import static ru.itmo.app.service.ComboboxService.createComboBoxWithAutoCompletionSupport;
 
 public class ControllerCreate extends ControllerSearch {
     @FXML
@@ -111,11 +118,21 @@ public class ControllerCreate extends ControllerSearch {
     @FXML
     private Button buttonAdd;
 
+    @FXML
+    private HBox myHbox;
+
     private static final DatabaseHandler dbHandler = new DatabaseHandler();
 
     @Override
     protected void initialize() {
+        ComboboxService comboboxService = new ComboboxService();
+        List<String> countries = comboboxService.loadFromDb();
+        ComboBox<ComboboxService.HideableItem<String>> comboBox = createComboBoxWithAutoCompletionSupport(countries);
+        comboBox.setMaxWidth(Double.MAX_VALUE);
+        comboBox.setMinWidth(comboBox.getWidth());
+        comboBox.setPrefWidth(comboBox.getWidth());
 
+        myHbox.getChildren().add(comboBox);
     }
 
     @FXML

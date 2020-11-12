@@ -18,7 +18,8 @@
                             <Font name="Roboto Light" size="14.0" />
                         </font>
                   </TextField>
-                    <ChoiceBox fx:id=""  onAction="#add" prefHeight="25.0" prefWidth="180.0"  style="-fx-background-color: #4F8A8B; -fx-background-radius: 5;" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="145.0"/>
+<!--                    <ComboBox fx:id="comboBox"  onAction="#add" prefHeight="25.0" prefWidth="180.0"  style="-fx-background-color: #4F8A8B; -fx-background-radius: 5;" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="145.0"/>-->
+                    <HBox fx:id="myHbox" prefHeight="25.0" prefWidth="180.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="145.0"/>
                     <TextField fx:id="textFieldPatronymic" alignment="TOP_LEFT" onAction="#add" prefHeight="25.0" prefWidth="180.0" promptText="Отчество" style="-fx-background-color: #4F8A8B; -fx-background-radius: 5;" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="210.0">
                         <font>
                             <Font name="Roboto Light" size="14.0" />
