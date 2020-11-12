@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import ru.itmo.app.service.ComboboxService;
 
@@ -119,20 +120,27 @@ public class ControllerCreate extends ControllerSearch {
     private Button buttonAdd;
 
     @FXML
-    private HBox myHbox;
+    private AnchorPane createAnchorPane;
 
     private static final DatabaseHandler dbHandler = new DatabaseHandler();
 
     @Override
     protected void initialize() {
+        //<ComboBox fx:id="comboBox"  onAction="#add" prefHeight="25.0" prefWidth="180.0"
+        // style="-fx-background-color: #4F8A8B; -fx-background-radius: 5;"
+        // AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="145.0"/>
+
         ComboboxService comboboxService = new ComboboxService();
         List<String> countries = comboboxService.loadFromDb();
-        ComboBox<ComboboxService.HideableItem<String>> comboBox = createComboBoxWithAutoCompletionSupport(countries);
-        comboBox.setMaxWidth(Double.MAX_VALUE);
-        comboBox.setMinWidth(comboBox.getWidth());
-        comboBox.setPrefWidth(comboBox.getWidth());
 
-        myHbox.getChildren().add(comboBox);
+        ComboBox<ComboboxService.HideableItem<String>> comboBox = createComboBoxWithAutoCompletionSupport(countries);
+        //comboBox.setMaxWidth(Double.MAX_VALUE);
+//        comboBox.setMinWidth(30);
+//        comboBox.setPrefWidth(50);
+        comboBox.setMinHeight(30);
+        comboBox.setMinWidth(100);
+
+        createAnchorPane.getChildren().add(comboBox);
     }
 
     @FXML
