@@ -13,14 +13,15 @@ import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class ControllerCreate extends ControllerSearch{
+public class ControllerCreate extends ControllerSearch {
     @FXML
     private TextField textFieldLastName;
 
@@ -260,8 +261,7 @@ public class ControllerCreate extends ControllerSearch{
 
                 Platform.runLater(() ->
                 {
-                    if (selectedItem[0] == null)
-                    {
+                    if (selectedItem[0] == null) {
                         double cellHeight = ((Control) lv.lookup(".list-cell")).getHeight();
                         lv.setFixedCellSize(cellHeight);
                     }
@@ -341,7 +341,7 @@ public class ControllerCreate extends ControllerSearch{
                 comboBoxPunishment, comboBoxOfficeOfPreparingReport, comboBoxGender);
     }
 
-    protected ComboBox<HideableItem<String>> createComboBox(Set<ModelComboBox> set, double x, double y){
+    protected ComboBox<HideableItem<String>> createComboBox(Set<ModelComboBox> set, double x, double y) {
         List<String> list = loadFromDb(set);
         ComboBox<HideableItem<String>> comboBox = createComboBoxWithAutoCompletionSupport(list);
         comboBox.setMinHeight(25);
@@ -353,25 +353,24 @@ public class ControllerCreate extends ControllerSearch{
         return comboBox;
     }
 
-    protected String comboBoxGetValue(ComboBox<HideableItem<String>> comboBox, Set<ModelComboBox> set){
-        final String[] textField = {null};
-            Optional<Integer> any = set.stream().filter(country -> comboBox.getValue().getObject().toString().equals(country.getName())).map(ModelComboBox::getCode).findAny();
-                    any.ifPresent(countryCode -> {
-//                        ((SimpleObjectProperty)((ComboBox)((ControllerUpdate)this).comboBoxNames).value).value;
-                        textField[0] = String.valueOf(countryCode);
-                        System.out.println("My country code here : " + countryCode);
-                    });
-        return textField[0];
+    protected Integer comboBoxGetValue(ComboBox<HideableItem<String>> comboBox, Set<ModelComboBox> set) {
+        final String currentVal = comboBox.getValue().toString();
+        return set.stream()
+                .filter(country -> currentVal.equals(country.getName()))
+                .map(ModelComboBox::getCode)
+                .peek(val -> System.out.println("   " + val))
+                .findAny()
+                .orElse(null);
     }
 
     @FXML
     private void add() {
         buttonAdd.setOnAction(event -> {
-            System.out.println(((ControllerUpdate)this).comboBoxNames.getValue());
+            System.out.println(((ControllerUpdate) this).comboBoxNames.getValue());
             String id = textFieldID1.getText() + textFieldID2.getText() + textFieldID3.getText() + textFieldID4.getText();
             dbHandler.createCard(parse(id), textFieldLastName.getText(),
-                    parse(comboBoxGetValue(((ControllerUpdate)this).comboBoxNames, names)),
-                    parse(comboBoxGetValue(((ControllerUpdate)this).comboBoxPatronymics, patronymics)),
+                    parse(comboBoxGetValue(((ControllerUpdate) this).comboBoxNames, names)),
+                    parse(comboBoxGetValue(((ControllerUpdate) this).comboBoxPatronymics, patronymics)),
                     textFieldDateOfBirth.getText(), parse(comboBoxGetValue(comboBoxGender, gender)),
                     parse(comboBoxGetValue(comboBoxCountry, countries)),
                     parse(textFieldRegion.getText()),
@@ -391,10 +390,10 @@ public class ControllerCreate extends ControllerSearch{
         });
     }
 
-    private Integer parse(String s){
-        try{
+    private Integer parse(String s) {
+        try {
             return Integer.valueOf(s);
-        }catch (NumberFormatException ex){
+        } catch (NumberFormatException ex) {
             System.err.println("Can't spread " + s);
             return null;
         }
