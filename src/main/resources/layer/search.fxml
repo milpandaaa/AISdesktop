@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-      <BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="894.0" style="-fx-background-color: #F4F6FF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.itmo.app.ControllerSearch" >
+      <BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="894.0" style="-fx-background-color: #F4F6FF;" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.itmo.app.ControllerSearch" >
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
@@ -20,7 +20,7 @@
                                <TableColumn fx:id="idColumn" prefWidth="82.0" style="-fx-background-color: #99b7b7; -fx-background-radius: 0; -fx-background-insets: 0; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 2, 0.5, 1, 1);" text="Номер дела" />
                                <TableColumn fx:id="nameColumn" prefWidth="200.0" style="-fx-background-color: #99b7b7;     -fx-background-radius: 0;     -fx-background-insets: 0;     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 2, 0.5, 1, 1);" text="ФИО" />
                         <TableColumn fx:id="dateOfBirthColumn" prefWidth="151.0" style="-fx-background-color: #99b7b7;     -fx-background-radius: 0;     -fx-background-insets: 0;     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 2, 0.5, 1, 1);" text="Дата рождения" />
-                        <TableColumn fx:id="regColumn" prefWidth="208.0" style="-fx-background-color: #99b7b7;     -fx-background-radius: 0;     -fx-background-insets: 0;     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 2, 0.5, 1, 1);" text="Информация о регистрации" />
+                        <TableColumn fx:id="regColumn" prefWidth="208.0" style="-fx-background-color: #99b7b7;     -fx-background-radius: 0;     -fx-background-insets: 0;     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 2, 0.5, 1, 1);" text="Информация о совершении нарушения" />
                                 <TableColumn fx:id="colBtn" minWidth="6.0" prefWidth="108.0" style="-fx-background-color: #99b7b7;     -fx-background-radius: 0;     -fx-background-insets: 0;     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.6), 2, 0.5, 1, 1);" />
                              </columns>
                               <opaqueInsets>

@@ -7,13 +7,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
 import javafx.util.Callback;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class ControllerSearch {
-       @FXML
+public class ControllerSearch extends ControllerBase{
+    @FXML
     private ObservableList<ModelTable> data = FXCollections.observableArrayList();
 
     @FXML
@@ -31,8 +32,10 @@ public class ControllerSearch {
     @FXML
     private TextField filterField;
 
+    protected Integer idCard;
+
     @FXML
-    protected void initialize() throws SQLException, ClassNotFoundException {
+    protected void initialize() throws SQLException {
         initData();
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -43,17 +46,24 @@ public class ControllerSearch {
         searchOnTableId();
     }
 
-    private void addButtonToTable() {
+    protected void addButtonToTable() {
         Callback<TableColumn<ModelTable, Void>, TableCell<ModelTable, Void>> cellFactory = new Callback<TableColumn<ModelTable, Void>, TableCell<ModelTable, Void>>() {
             @Override
             public TableCell<ModelTable, Void> call(final TableColumn<ModelTable, Void> param) {
                 final TableCell<ModelTable, Void> cell = new TableCell<ModelTable, Void>() {
                     private final Button btn = new Button("Подробнее");
                     {
-                        btn.setOnAction((ActionEvent event) -> {
+                        btn.setOnAction(event -> {
                             ModelTable data = getTableView().getItems().get(getIndex());
-                            System.out.println("selectedData: " + data.getId());
+                            idCard = data.getId();
+                            FxmlLoader object = new FxmlLoader();
+                            Pane view = object.getPane("update");
+                            mainPane.setCenter(view);
                         });
+//                        btn.setOnAction((ActionEvent event) -> {
+//                            ModelTable data = getTableView().getItems().get(getIndex());
+//                            System.out.println("selectedData: " + data.getId());
+//                        });
                     }
 
                     @Override
@@ -84,18 +94,22 @@ public class ControllerSearch {
                 Integer first_name = resultSet.getInt(Const.CARD_FIRST_NAME);
                 Integer patronymic = resultSet.getInt(Const.CARD_PATRONYMIC);
                 String last_name = resultSet.getString(Const.CARD_LAST_NAME);
-                String date = resultSet.getString(Const.CARD_DATE_OF_BIRTH);
-                Integer country = resultSet.getInt(Const.CARD_COUNTY);
-                Integer region = resultSet.getInt(Const.CARD_REGION);
-                String outdoors = resultSet.getString(Const.CARD_OUTDOORS);
-                String address;
-                if(country == 0)
-                    address = "";
-                else
-                    address = searchDictionaryWord(Const.COUNTRY_TABLE, Const.COUNTRY_NAME, country) + ", " + region + ", " + outdoors;
-                String name = last_name + " " + searchDictionaryWord(Const.NAME_TABLE, Const.NAME, first_name) + " " +
-                        searchDictionaryWord(Const.PATRONYMIC_TABLE, Const.PATRONYMIC, patronymic);
-                data.add(new ModelTable(id, name, date, address));
+                String date = parse(resultSet.getString(Const.CARD_DATE_OF_BIRTH));
+
+                String dateTime = resultSet.getString(Const.CARD_PLACE_OF_COMMISSION);
+                String place = resultSet.getString(Const.CARD_DATE_OF_COMMISSION);
+                String info = dateTime + ", " + place;
+                String name;
+                if(first_name == 0)
+                    name = "";
+                else {
+                    if(patronymic !=0)
+                    name = last_name + " " + searchDictionaryWord(Const.NAME_TABLE, Const.NAME, first_name) + " " +
+                            searchDictionaryWord(Const.PATRONYMIC_TABLE, Const.PATRONYMIC, patronymic);
+                    else
+                        name = last_name + " " + searchDictionaryWord(Const.NAME_TABLE, Const.NAME, first_name);
+                }
+                data.add(new ModelTable(id, name, date, info));
             }
         }
     }
@@ -135,6 +149,15 @@ public class ControllerSearch {
             }
             table.setItems(subentries);
         });
+    }
+
+    private String parse(String s){
+        try{
+            return s;
+        }catch (NumberFormatException ex){
+            System.err.println("Can't spread " + s);
+            return null;
+        }
     }
 
 

@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class ControllerAddName extends ControllerSearch {
+public class ControllerAddName {
     @FXML
     private Button buttonAddNames;
 
@@ -27,8 +27,5 @@ public class ControllerAddName extends ControllerSearch {
 //                    }
 //                };
 //        buttonAddNames.setOnAction(event);
-    }
-    protected void initialize(){
-
     }
 }

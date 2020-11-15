@@ -7,13 +7,15 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.sql.SQLException;
+
 public class ControllerBase extends Controller{
 
     @FXML
     protected Button buttonCreate, imageButtonAvatar, buttonAddName, buttonAddPatr, buttonSearch, buttonStatistic;
 
     @FXML
-    private BorderPane mainPane;
+    protected BorderPane mainPane;
 
 
     @FXML
@@ -74,8 +76,7 @@ public class ControllerBase extends Controller{
     }
 
     @FXML
-    protected void initialize() {
-        System.out.println(isPrivilege());
+    protected void initialize() throws SQLException, ClassNotFoundException {
         if(!isPrivilege()) {
             buttonAddName.setVisible(false);
             buttonAddPatr.setVisible(false);

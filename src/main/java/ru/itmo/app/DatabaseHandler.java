@@ -51,6 +51,33 @@ public class DatabaseHandler {
 //                "VALUES('?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?')";
                 "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement prSt = DatabaseConnection.getInstance().getConnection().prepareStatement(insert)) {
+//            prSt.setInt(1, card.getId());
+//            prSt.setString(2, card.getLast_name());
+//            setInteger(3, card.getFirst_name(), prSt);
+//            setInteger(4, card.getPatronymic(), prSt);
+//            setDate(5, card.getDate_of_birth(), prSt);
+//            setInteger(6, card.getGender(), prSt);
+//            setInteger(7, card.getCountry(), prSt);
+//            setInteger(8, card.getRegion(), prSt);
+//            prSt.setString(9, card.getOutdoors());
+//            setDate(10, card.getDate_of_commission(), prSt);
+//            prSt.setString(11, card.getPlace_of_commission());
+//            setDate(12, card.getDate_of_initiation(), prSt);
+//            setInteger(13, card.getOffice_of_initiation(), prSt);
+//            prSt.setString(14, card.getName_of_initiation());
+//            setDate(15, card.getDate_of_preparing_report(), prSt);
+//            setInteger(16, card.getOffice_of_preparing_report(), prSt);
+//            prSt.setString(17, card.getName_of_preparing_report());
+//            setInteger(18, card.getId_article(), prSt);
+//            setDate(19, card.getDate_of_decision(), prSt);
+//            prSt.setString(20, card.getDecision());
+//            setInteger(21, card.getOffice_of_decision(), prSt);
+//            prSt.setString(22, card.getName_of_decision());
+//            setInteger(23, card.getPunishment(), prSt);
+//            setInteger(24, card.getSum(), prSt);
+//            setDate(25, card.getDate_of_entry_into_force(), prSt);
+//            setDate(26,card.getDate_sentence_enforcement(), prSt);
+//            setInteger(27, card.getAmount(), prSt);
             prSt.setInt(1, id);
             prSt.setString(2, last_name);
             setInteger(3, first_name, prSt);
@@ -78,7 +105,6 @@ public class DatabaseHandler {
             setDate(25, date_of_entry_into_force, prSt);
             setDate(26,date_sentence_enforcement, prSt);
             setInteger(27, amount, prSt);
-
             prSt.executeUpdate();
             System.out.println(prSt);
         } catch (SQLException e) {

@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class ControllerStatistic extends ControllerSearch {
+public class ControllerStatistic{
 
     @FXML
     private BarChart<String, Integer> barChart;
@@ -21,7 +21,7 @@ public class ControllerStatistic extends ControllerSearch {
     @FXML
     private NumberAxis y;
 
-    @Override
+    @FXML
     protected void initialize() throws SQLException, ClassNotFoundException {
         XYChart.Series setl = new XYChart.Series();
         setl.getData().add(new XYChart.Data("Совершенные дела", stageStatistic(Const.CARD_DATE_OF_COMMISSION)));

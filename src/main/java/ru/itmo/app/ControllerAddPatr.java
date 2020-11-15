@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class ControllerAddPatr extends ControllerSearch {
+public class ControllerAddPatr{
     @FXML
     private Button buttonAddPatrs;
 
@@ -17,7 +17,5 @@ public class ControllerAddPatr extends ControllerSearch {
     public void add() {
         buttonAddPatrs.setOnAction(event -> dbHandler.addPatr(textFieldAddPatr.getText()));
     }
-    protected void initialize(){
 
-    }
 }

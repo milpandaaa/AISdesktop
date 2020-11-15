@@ -79,4 +79,10 @@ public class Const {
     public static final String REFERRAL_OFFICE_ARRIVAL = "office_arrival";
 
 
+    public static final String ARTICLE_TABLE = "article";
+
+    public static final String ARTICLE_ID = "id_article";
+    public static final String ARTICLE = "description";
+
+
 }
