@@ -61,7 +61,7 @@ public class Const {
 
     public static final String OFFICE_ID = "id_office";
     public static final String OFFICE_DEPARTMENT = "department";
-    public static final String OFFICE = "name_office";
+    public static final String OFFICE = "office";
 
     public static final String PUNISHMENT_TABLE = "punishment";
 

@@ -32,7 +32,15 @@ public class ControllerSearch extends ControllerBase{
     @FXML
     private TextField filterField;
 
-    protected Integer idCard;
+    static private Integer idCard;
+
+    public Integer getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(Integer idCard) {
+        ControllerSearch.idCard = idCard;
+    }
 
     @FXML
     protected void initialize() throws SQLException {
@@ -114,17 +122,19 @@ public class ControllerSearch extends ControllerBase{
         }
     }
 
-    private String searchDictionaryWord(String table, String nameColumn, Integer valueColumn) throws SQLException {
-        if(valueColumn!=null || valueColumn==0 ) {
+    protected String searchDictionaryWord(String table, String nameColumn, Integer valueColumn) throws SQLException {
+        if(valueColumn==null || valueColumn==0 )
+            return "";
+         else {
             String query = "SELECT " + nameColumn + " FROM " + table + " where id_" + nameColumn + " = " + valueColumn;
             try (Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
                  ResultSet resultSet = statement.executeQuery(query)) {
                 resultSet.next();
-                return resultSet.getString(nameColumn);
+                if(resultSet.getString(nameColumn)!=null)
+                    return resultSet.getString(nameColumn);
+                else return "";
             }
         }
-        else
-            return "";
     }
 
 
@@ -151,7 +161,7 @@ public class ControllerSearch extends ControllerBase{
         });
     }
 
-    private String parse(String s){
+    protected String parse(String s){
         try{
             return s;
         }catch (NumberFormatException ex){

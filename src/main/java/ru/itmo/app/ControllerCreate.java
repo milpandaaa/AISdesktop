@@ -14,13 +14,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class ControllerCreate extends ControllerSearch{
+public class ControllerCreate extends ControllerSearch {
     @FXML
     private TextField textFieldLastName;
 
@@ -97,16 +98,16 @@ public class ControllerCreate extends ControllerSearch{
     private AnchorPane anchorPane;
 
     private ComboBox<HideableItem<String>> comboBoxNames = new ComboBox<HideableItem<String>>();
-    ComboBox<HideableItem<String>> comboBoxPatronymics = new ComboBox<HideableItem<String>>();
-    ComboBox<HideableItem<String>> comboBoxCountry = new ComboBox<HideableItem<String>>();
-    ComboBox<HideableItem<String>> comboBoxGender = new ComboBox<HideableItem<String>>();
-    ComboBox<HideableItem<String>> comboBoxOfficeOfInitiation = new ComboBox<HideableItem<String>>();
-    ComboBox<HideableItem<String>> comboBoxArticles = new ComboBox<HideableItem<String>>();
-    ComboBox<HideableItem<String>> comboBoxOfficeOfDecision = new ComboBox<HideableItem<String>>();
-    ComboBox<HideableItem<String>> comboBoxOfficeArrival = new ComboBox<HideableItem<String>>();
-    ComboBox<HideableItem<String>> comboBoxOfficeDeparture = new ComboBox<HideableItem<String>>();
-    ComboBox<HideableItem<String>> comboBoxOfficeOfPreparingReport = new ComboBox<HideableItem<String>>();
-    ComboBox<HideableItem<String>> comboBoxPunishment = new ComboBox<HideableItem<String>>();
+    private ComboBox<HideableItem<String>> comboBoxPatronymics = new ComboBox<HideableItem<String>>();
+    private ComboBox<HideableItem<String>> comboBoxCountry = new ComboBox<HideableItem<String>>();
+    private ComboBox<HideableItem<String>> comboBoxGender = new ComboBox<HideableItem<String>>();
+    private ComboBox<HideableItem<String>> comboBoxOfficeOfInitiation = new ComboBox<HideableItem<String>>();
+    private ComboBox<HideableItem<String>> comboBoxArticles = new ComboBox<HideableItem<String>>();
+    private ComboBox<HideableItem<String>> comboBoxOfficeOfDecision = new ComboBox<HideableItem<String>>();
+    private ComboBox<HideableItem<String>> comboBoxOfficeArrival = new ComboBox<HideableItem<String>>();
+    private ComboBox<HideableItem<String>> comboBoxOfficeDeparture = new ComboBox<HideableItem<String>>();
+    private ComboBox<HideableItem<String>> comboBoxOfficeOfPreparingReport = new ComboBox<HideableItem<String>>();
+    private ComboBox<HideableItem<String>> comboBoxPunishment = new ComboBox<HideableItem<String>>();
 
     protected static final DatabaseHandler dbHandler = new DatabaseHandler();
 
@@ -136,7 +137,7 @@ public class ControllerCreate extends ControllerSearch{
 
     protected static Set<ModelComboBox> offices = new TreeSet<ModelComboBox>(Comparator.comparing(ModelComboBox::getName)) {{
         try {
-            addAll(initData(Const.OFFICE_TABLE, Const.OFFICE_ID, Const.OFFICE_DEPARTMENT));
+            addAll(initData(Const.OFFICE_TABLE, Const.OFFICE_ID, Const.OFFICE));
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -188,10 +189,11 @@ public class ControllerCreate extends ControllerSearch{
     }
 
     public static class HideableItem<T> {
+
         private final ObjectProperty<T> object = new SimpleObjectProperty<>();
         private final BooleanProperty hidden = new SimpleBooleanProperty();
 
-        private HideableItem(T object) {
+        public HideableItem(T object) {
             setObject(object);
         }
 
@@ -199,11 +201,11 @@ public class ControllerCreate extends ControllerSearch{
             return this.object;
         }
 
-        private T getObject() {
+        public T getObject() {
             return this.objectProperty().get();
         }
 
-        private void setObject(T object) {
+        public void setObject(T object) {
             this.objectProperty().set(object);
         }
 
@@ -260,8 +262,7 @@ public class ControllerCreate extends ControllerSearch{
 
                 Platform.runLater(() ->
                 {
-                    if (selectedItem[0] == null)
-                    {
+                    if (selectedItem[0] == null) {
                         double cellHeight = ((Control) lv.lookup(".list-cell")).getHeight();
                         lv.setFixedCellSize(cellHeight);
                     }
@@ -341,10 +342,10 @@ public class ControllerCreate extends ControllerSearch{
                 comboBoxPunishment, comboBoxOfficeOfPreparingReport, comboBoxGender);
     }
 
-    protected ComboBox<HideableItem<String>> createComboBox(Set<ModelComboBox> set, double x, double y){
+    protected ComboBox<HideableItem<String>> createComboBox(Set<ModelComboBox> set, double x, double y) {
         List<String> list = loadFromDb(set);
         ComboBox<HideableItem<String>> comboBox = createComboBoxWithAutoCompletionSupport(list);
-        comboBox.setMinHeight(25);
+        comboBox.setMinHeight(30);
         comboBox.setMinWidth(180);
         comboBox.setStyle("-fx-background-color: #4F8A8B; -fx-background-radius: 5;");
         comboBox.setLayoutX(x);
@@ -353,48 +354,47 @@ public class ControllerCreate extends ControllerSearch{
         return comboBox;
     }
 
-    protected String comboBoxGetValue(ComboBox<HideableItem<String>> comboBox, Set<ModelComboBox> set){
-        final String[] textField = {null};
-            Optional<Integer> any = set.stream().filter(country -> comboBox.getValue().getObject().toString().equals(country.getName())).map(ModelComboBox::getCode).findAny();
-                    any.ifPresent(countryCode -> {
-//                        ((SimpleObjectProperty)((ComboBox)((ControllerUpdate)this).comboBoxNames).value).value;
-                        textField[0] = String.valueOf(countryCode);
-                        System.out.println("My country code here : " + countryCode);
-                    });
-        return textField[0];
+    protected Integer comboBoxGetValue(ComboBox<HideableItem<String>> comboBox, Set<ModelComboBox> set) {
+        final String currentVal = comboBox.getValue().toString();
+        return set.stream()
+                .filter(country -> currentVal.equals(country.getName()))
+                .map(ModelComboBox::getCode)
+                .peek(val -> System.out.println("   " + val))
+                .findAny()
+                .orElse(null);
     }
 
     @FXML
     private void add() {
         buttonAdd.setOnAction(event -> {
-            System.out.println(((ControllerUpdate)this).comboBoxNames.getValue());
-            String id = textFieldID1.getText() + textFieldID2.getText() + textFieldID3.getText() + textFieldID4.getText();
-            dbHandler.createCard(parse(id), textFieldLastName.getText(),
-                    parse(comboBoxGetValue(((ControllerUpdate)this).comboBoxNames, names)),
-                    parse(comboBoxGetValue(((ControllerUpdate)this).comboBoxPatronymics, patronymics)),
-                    textFieldDateOfBirth.getText(), parse(comboBoxGetValue(comboBoxGender, gender)),
-                    parse(comboBoxGetValue(comboBoxCountry, countries)),
-                    parse(textFieldRegion.getText()),
+            Integer id = Integer.valueOf(textFieldID1.getText() + textFieldID2.getText() + textFieldID3.getText() + textFieldID4.getText());
+            dbHandler.createCard(id, textFieldLastName.getText(),
+                    comboBoxGetValue(comboBoxNames, names),
+                    comboBoxGetValue(comboBoxPatronymics, patronymics),
+                    textFieldDateOfBirth.getText(),
+                    comboBoxGetValue(comboBoxGender, gender),
+                    comboBoxGetValue(comboBoxCountry, countries),
+                    parseInt(textFieldRegion.getText()),
                     textFieldOutdoors.getText(),
                     textFieldDateOfCommission.getText(), textFieldPlaceOfCommission.getText(),
-                    textFieldDateOfInitiation.getText(), parse(comboBoxGetValue(comboBoxOfficeOfInitiation, offices)),
+                    textFieldDateOfInitiation.getText(), comboBoxGetValue(comboBoxOfficeOfInitiation, offices),
                     textFieldNameOfInitiation.getText(), textFieldDateOfPreparingReport.getText(),
-                    parse(comboBoxGetValue(comboBoxOfficeOfPreparingReport, offices)),
-                    textFieldNameOfPreparingReport.getText(), parse(comboBoxGetValue(comboBoxArticles, articles)),
+                    comboBoxGetValue(comboBoxOfficeOfPreparingReport, offices),
+                    textFieldNameOfPreparingReport.getText(), comboBoxGetValue(comboBoxArticles, articles),
                     textFieldDateOfDecision.getText(), textFieldDecision.getText(),
-                    parse(comboBoxGetValue(comboBoxOfficeOfDecision, offices)), textFieldNameOfDecision.getText(),
-                    parse(comboBoxGetValue(comboBoxPunishment, punichments)), parse(textFieldPunishmentSum.getText()),
+                    comboBoxGetValue(comboBoxOfficeOfDecision, offices), textFieldNameOfDecision.getText(),
+                    comboBoxGetValue(comboBoxPunishment, punichments), parseInt(textFieldPunishmentSum.getText()),
                     textFieldDateOfEntryIntoForce.getText(), textFieldDateSentenceEnforcement.getText(),
-                    parse(textFieldAmount.getText()));
-            dbHandler.addReferral(parse(id), textFieldDateDeparture.getText(), parse(comboBoxGetValue(comboBoxOfficeDeparture, offices)),
-                    textFieldDateArrival.getText(), parse(comboBoxGetValue(comboBoxOfficeArrival, offices)));
+                    parseInt(textFieldAmount.getText()));
+            dbHandler.addReferral(id, textFieldDateDeparture.getText(), comboBoxGetValue(comboBoxOfficeDeparture, offices),
+                    textFieldDateArrival.getText(), comboBoxGetValue(comboBoxOfficeArrival, offices));
         });
     }
 
-    private Integer parse(String s){
-        try{
+    protected Integer parseInt(String s) {
+        try {
             return Integer.valueOf(s);
-        }catch (NumberFormatException ex){
+        } catch (NumberFormatException ex) {
             System.err.println("Can't spread " + s);
             return null;
         }

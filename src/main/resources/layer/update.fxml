@@ -5,7 +5,7 @@
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="893.0" style="-fx-background-color: #F4F6FF;" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.itmo.app.ControllerCreate">
+<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="893.0" style="-fx-background-color: #F4F6FF;" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.itmo.app.ControllerUpdate">
     <center>
         <ScrollPane layoutX="131.0" layoutY="77.0" prefHeight="700.0" prefWidth="880.0" style="-fx-background-color: #F4F6FF;" AnchorPane.leftAnchor="130.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <content>
@@ -164,27 +164,11 @@
                             </font>
                         </TextField>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#99b7b7" height="2.0" layoutX="718.0" layoutY="260.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="120.0" AnchorPane.leftAnchor="670.0" AnchorPane.topAnchor="260.0" />
-                        <Text fill="#4f8a8b" layoutX="660.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Передача по подведомственности" AnchorPane.leftAnchor="660.0" AnchorPane.topAnchor="275.05078125" />
-                        <TextField fx:id="textFieldID1" alignment="TOP_LEFT" layoutX="143.0" layoutY="8.0" onAction="#add" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #4F8A8B; -fx-background-radius: 5;" AnchorPane.leftAnchor="140.0" AnchorPane.topAnchor="8.0">
+                        <Text fill="#4f8a8b" layoutX="660.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Передача по подведомственности" AnchorPane.leftAnchor="660.0" AnchorPane.topAnchor="275.05078125">
                             <font>
-                                <Font name="Roboto Light" size="14.0" />
+                                <Font name="Roboto Light" size="12.0" />
                             </font>
-                        </TextField>
-                        <TextField fx:id="textFieldID2" alignment="TOP_LEFT" layoutX="211.0" layoutY="8.0" onAction="#add" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: #4F8A8B; -fx-background-radius: 5;" AnchorPane.leftAnchor="210.0" AnchorPane.topAnchor="8.0">
-                            <font>
-                                <Font name="Roboto Light" size="14.0" />
-                            </font>
-                        </TextField>
-                        <TextField fx:id="textFieldID3" alignment="TOP_LEFT" layoutX="283.0" layoutY="8.0" onAction="#add" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: #4F8A8B; -fx-background-radius: 5;" AnchorPane.leftAnchor="280.0" AnchorPane.topAnchor="8.0">
-                            <font>
-                                <Font name="Roboto Light" size="14.0" />
-                            </font>
-                        </TextField>
-                        <TextField fx:id="textFieldID4" alignment="TOP_LEFT" layoutX="374.0" layoutY="8.0" onAction="#add" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #4F8A8B; -fx-background-radius: 5;" AnchorPane.leftAnchor="375.0" AnchorPane.topAnchor="8.0">
-                            <font>
-                                <Font name="Roboto Light" size="14.0" />
-                            </font>
-                        </TextField>
+                        </Text>
                         <Text fill="#4f8a8b" layoutX="200.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Пол" AnchorPane.leftAnchor="200.0" AnchorPane.topAnchor="255.0">
                             <font>
                                 <Font name="Roboto Light" size="12.0" />
@@ -193,6 +177,11 @@
                         <Text fill="#4f8a8b" layoutX="60.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Номер дела" AnchorPane.leftAnchor="70.0" AnchorPane.topAnchor="17.0">
                             <font>
                                 <Font name="Roboto Light" size="12.0" />
+                            </font>
+                        </Text>
+                        <Text fx:id="textFieldID" fill="#4f8a8b" layoutX="143.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-background-color: #4F8A8B; -fx-background-radius: 5;" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="17.0">
+                            <font>
+                                <Font name="Roboto Light" size="14.0" />
                             </font>
                         </Text>
                     </children>

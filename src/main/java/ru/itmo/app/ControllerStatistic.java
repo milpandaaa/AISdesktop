@@ -35,7 +35,7 @@ public class ControllerStatistic{
 
     }
 
-    private Integer stageStatistic(String process) throws SQLException, ClassNotFoundException {
+    private Integer stageStatistic(String process) throws SQLException {
         String querry = "SELECT COUNT(*) FROM " + Const.CARD_TABLE + " where " + process + " IS NOT NULL";
         try (Statement statement = DatabaseConnection.getInstance().getConnection().createStatement();
              ResultSet resultSet = statement.executeQuery(querry)) {
@@ -44,6 +44,4 @@ public class ControllerStatistic{
             return answer;
         }
     }
-
-
 }
