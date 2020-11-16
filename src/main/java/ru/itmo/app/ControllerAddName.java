@@ -6,26 +6,17 @@ import javafx.scene.control.TextField;
 
 public class ControllerAddName {
     @FXML
-    private Button buttonAddNames;
+    public Button buttonAddName;
 
     @FXML
     private TextField textFieldAddName;
+    DatabaseHandler dbHandler = new DatabaseHandler();
 
     @FXML
     public void add() {
-        DatabaseHandler dbHandler = new DatabaseHandler();
-
-        buttonAddNames.setOnAction(event -> dbHandler.addName(textFieldAddName.getText()));
-
-//        TilePane r = new TilePane();
-//        Alert a = new Alert(Alert.AlertType.NONE);
-//        EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
-//                    public void handle(ActionEvent e)
-//                    {
-//                        a.setAlertType(Alert.AlertType.valueOf(""));
-//                        a.show();
-//                    }
-//                };
-//        buttonAddNames.setOnAction(event);
+        buttonAddName.setOnAction(event ->{
+                    dbHandler.addName(textFieldAddName.getText());
+                    AlertSending.alertInfo();
+                });
     }
 }

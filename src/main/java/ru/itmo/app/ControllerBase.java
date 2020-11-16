@@ -1,11 +1,13 @@
 package ru.itmo.app;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.sql.SQLException;
 
@@ -81,6 +83,17 @@ public class ControllerBase extends Controller{
             buttonAddName.setVisible(false);
             buttonAddPatr.setVisible(false);
         }
+        FxmlLoader object = new FxmlLoader();
+        Pane view = object.getPane("search");
+        mainPane.setCenter(view);
+    }
 
+    protected void alertInfo(){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.initStyle(StageStyle.UTILITY);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText("Изменения применены");
+        alert.showAndWait();
     }
 }

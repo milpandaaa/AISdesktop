@@ -388,6 +388,7 @@ public class ControllerCreate extends ControllerSearch {
                     parseInt(textFieldAmount.getText()));
             dbHandler.addReferral(id, textFieldDateDeparture.getText(), comboBoxGetValue(comboBoxOfficeDeparture, offices),
                     textFieldDateArrival.getText(), comboBoxGetValue(comboBoxOfficeArrival, offices));
+            AlertSending.alertInfo();
         });
     }
 

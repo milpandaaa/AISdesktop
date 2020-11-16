@@ -1,5 +1,8 @@
 package ru.itmo.app;
 
+import javafx.scene.control.Alert;
+import javafx.stage.StageStyle;
+
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Types;
@@ -80,6 +83,7 @@ public class DatabaseHandler {
             prSt.executeUpdate();
             System.out.println(prSt);
         } catch (SQLException e) {
+            AlertSending.alertError();
             e.printStackTrace();
         }
     }
@@ -119,6 +123,7 @@ public class DatabaseHandler {
             setInteger(5, officeArrival, prSt);
             prSt.executeUpdate();
         } catch (SQLException e) {
+            AlertSending.alertError();
             e.printStackTrace();
         }
     }
@@ -170,6 +175,7 @@ public class DatabaseHandler {
             prSt.setInt(27, id);
             prSt.executeUpdate();
         } catch (SQLException e) {
+            AlertSending.alertError();
             e.printStackTrace();
         }
     }
@@ -188,7 +194,9 @@ public class DatabaseHandler {
             prSt.setInt(5, card);
             prSt.executeUpdate();
         } catch (SQLException e) {
+            AlertSending.alertError();
             e.printStackTrace();
         }
     }
+
 }

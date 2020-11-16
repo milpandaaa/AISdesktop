@@ -178,6 +178,7 @@ public class ControllerUpdate extends ControllerCreate{
                     parseInt(textFieldAmount.getText()));
             dbHandler.editReferral(getIdCard(), textFieldDateDeparture.getText(), comboBoxGetValue(comboBoxOfficeDeparture, offices),
                     textFieldDateArrival.getText(), comboBoxGetValue(comboBoxOfficeArrival, offices));
+            AlertSending.alertInfo();
         });
     }
 
