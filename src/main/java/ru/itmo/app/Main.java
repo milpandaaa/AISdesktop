@@ -6,6 +6,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.Timer;
+
 public class Main extends Application {
 
     @Override
@@ -18,6 +20,10 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+        DataBaseDump dataBaseDump = new DataBaseDump();
+        Timer timer = new Timer();
+        timer.schedule(dataBaseDump, 300, 86_400_000);
         launch(args);
+
     }
 }

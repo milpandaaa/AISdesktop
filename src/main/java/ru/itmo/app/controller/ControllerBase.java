@@ -1,13 +1,13 @@
-package ru.itmo.app;
+package ru.itmo.app.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import ru.itmo.app.FxmlLoader;
 
 import java.sql.SQLException;
 

@@ -1,8 +1,10 @@
-package ru.itmo.app;
+package ru.itmo.app.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import ru.itmo.app.AlertSending;
+import ru.itmo.app.DatabaseHandler;
 
 public class ControllerAddName {
     @FXML
@@ -10,6 +12,7 @@ public class ControllerAddName {
 
     @FXML
     private TextField textFieldAddName;
+
     DatabaseHandler dbHandler = new DatabaseHandler();
 
     @FXML

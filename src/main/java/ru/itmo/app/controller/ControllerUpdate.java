@@ -1,4 +1,4 @@
-package ru.itmo.app;
+package ru.itmo.app.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -6,11 +6,14 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import ru.itmo.app.AlertSending;
+import ru.itmo.app.Const;
+import ru.itmo.app.DatabaseConnection;
+import ru.itmo.app.model.ModelComboBox;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
 import java.util.Set;
 
 public class ControllerUpdate extends ControllerCreate{

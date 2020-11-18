@@ -1,4 +1,4 @@
-package ru.itmo.app;
+package ru.itmo.app.controller;
 import javafx.fxml.FXML;
 
 import java.io.IOException;

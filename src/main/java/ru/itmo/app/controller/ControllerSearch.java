@@ -1,14 +1,18 @@
-package ru.itmo.app;
+package ru.itmo.app.controller;
 
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.util.Callback;
+import ru.itmo.app.Const;
+import ru.itmo.app.DatabaseConnection;
+import ru.itmo.app.FxmlLoader;
+import ru.itmo.app.model.ModelTable;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;

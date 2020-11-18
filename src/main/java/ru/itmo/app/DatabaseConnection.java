@@ -1,8 +1,11 @@
 package ru.itmo.app;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class DatabaseConnection {
 
@@ -13,8 +16,9 @@ public class DatabaseConnection {
     private final static String dbUser = "root";
     private final static String dbPass = "1234";
     private final static String dbName = "pp";
+    private final static String filePath = "C:\\Users\\milpa\\IdeaProjects\\pract\\dump";
 
-    private DatabaseConnection() throws SQLException {
+    DatabaseConnection() throws SQLException {
         try {
             String connectionString = "jdbc:mysql://" + dbHost + ":" + dbPost + "/" + dbName + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -26,6 +30,13 @@ public class DatabaseConnection {
 
     public Connection getConnection() {
         return connection;
+    }
+
+    static public String dump(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDateTime now = LocalDateTime.now();
+        File file = new File(filePath, dtf.format(now) +".sql");
+        return "mysqldump -u "+dbUser+" -p"+dbPass+" "+dbName+" -r "+file;
     }
 
     public static DatabaseConnection getInstance() throws SQLException {

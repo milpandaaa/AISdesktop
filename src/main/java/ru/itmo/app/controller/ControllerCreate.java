@@ -1,4 +1,4 @@
-package ru.itmo.app;
+package ru.itmo.app.controller;
 
 import com.sun.javafx.scene.control.skin.ComboBoxListViewSkin;
 import javafx.application.Platform;
@@ -14,6 +14,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
+import ru.itmo.app.AlertSending;
+import ru.itmo.app.Const;
+import ru.itmo.app.DatabaseConnection;
+import ru.itmo.app.DatabaseHandler;
+import ru.itmo.app.model.ModelComboBox;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

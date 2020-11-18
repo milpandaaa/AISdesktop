@@ -1,8 +1,5 @@
 package ru.itmo.app;
 
-import javafx.scene.control.Alert;
-import javafx.stage.StageStyle;
-
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Types;
@@ -198,5 +195,7 @@ public class DatabaseHandler {
             e.printStackTrace();
         }
     }
+
+
 
 }

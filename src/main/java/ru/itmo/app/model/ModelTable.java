@@ -1,4 +1,4 @@
-package ru.itmo.app;
+package ru.itmo.app.model;
 
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Button;
