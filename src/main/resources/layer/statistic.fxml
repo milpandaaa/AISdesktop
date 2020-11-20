@@ -5,7 +5,7 @@
 
       <BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="893.0" style="-fx-background-color: #F4F6FF;" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.itmo.app.controller.ControllerStatistic" >
          <center>
-            <BarChart fx:id="barChart" prefHeight="569.0" prefWidth="769.0" BorderPane.alignment="CENTER">
+            <BarChart fx:id="barChart" prefHeight="569.0" prefWidth="769.0" BorderPane.alignment="CENTER" style="-fx-bar-fill: #00FFCC;">
               <xAxis>
                 <CategoryAxis label="Стадии ведения административного дела" prefHeight="113.0" prefWidth="422.0" tickLabelRotation="-89" />
               </xAxis>

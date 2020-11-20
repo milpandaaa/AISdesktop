@@ -26,15 +26,6 @@ public class DataBaseDump extends java.util.TimerTask {
                     System.out.println("Backup Complete");
                 } else {
                     System.out.println("Backup Failure");
-                    System.out.println(processComplete);
-                    // abnormally terminated, there was some problem
-                    //a way to read the error during the execution of the command
-                    InputStream errorStream = runtimeProcess.getErrorStream();
-                    byte[] buffer = new byte[errorStream.available()];
-                    errorStream.read(buffer);
-
-                    String str = new String(buffer);
-                    System.out.println(str);
                 }
             } catch (IOException | InterruptedException ex) {
                 System.out.println( "Error at Backuprestore" + ex.getMessage());
