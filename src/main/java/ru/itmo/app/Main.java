@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.text.ParseException;
 import java.util.Timer;
 
 public class Main extends Application {
@@ -19,11 +20,11 @@ public class Main extends Application {
     }
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
+//        LogControl.checkLessDateNow("hsgf", "2020-10-10");
         DataBaseDump dataBaseDump = new DataBaseDump();
         Timer timer = new Timer();
-        timer.schedule(dataBaseDump, 300, 86_400_000);
+        timer.schedule(dataBaseDump, 86_400_000, 86_400_000);
         launch(args);
-
     }
 }

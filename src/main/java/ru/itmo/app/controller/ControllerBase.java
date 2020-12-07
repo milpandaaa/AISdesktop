@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import ru.itmo.app.FxmlLoader;
@@ -18,6 +19,9 @@ public class ControllerBase extends Controller{
 
     @FXML
     protected BorderPane mainPane;
+
+    @FXML
+    protected Text textStatus, textStatusPlus;
 
 
     @FXML
@@ -82,6 +86,10 @@ public class ControllerBase extends Controller{
         if(!isPrivilege()) {
             buttonAddName.setVisible(false);
             buttonAddPatr.setVisible(false);
+            textStatusPlus.setVisible(false);
+        }
+        else{
+            textStatus.setVisible(false);
         }
         FxmlLoader object = new FxmlLoader();
         Pane view = object.getPane("search");

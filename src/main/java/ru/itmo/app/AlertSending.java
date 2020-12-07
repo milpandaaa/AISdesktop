@@ -13,6 +13,14 @@ public class AlertSending {
         alert.setContentText("Ошибка");
         alert.showAndWait();
     }
+    static public  void alertError(String attribute){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.initStyle(StageStyle.UTILITY);
+        alert.setTitle("Error Message");
+        alert.setHeaderText(null);
+        alert.setContentText("Неправильно введена дата в " + attribute);
+        alert.showAndWait();
+    }
     static public void alertInfo(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.initStyle(StageStyle.UTILITY);

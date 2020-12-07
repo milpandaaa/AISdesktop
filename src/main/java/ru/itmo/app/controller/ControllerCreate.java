@@ -14,15 +14,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
-import ru.itmo.app.AlertSending;
-import ru.itmo.app.Const;
-import ru.itmo.app.DatabaseConnection;
-import ru.itmo.app.DatabaseHandler;
+import ru.itmo.app.*;
 import ru.itmo.app.model.ModelComboBox;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -373,27 +371,34 @@ public class ControllerCreate extends ControllerSearch {
     private void add() {
         buttonAdd.setOnAction(event -> {
             Integer id = Integer.valueOf(textFieldID1.getText() + textFieldID2.getText() + textFieldID3.getText() + textFieldID4.getText());
-            dbHandler.createCard(id, textFieldLastName.getText(),
-                    comboBoxGetValue(comboBoxNames, names),
-                    comboBoxGetValue(comboBoxPatronymics, patronymics),
-                    textFieldDateOfBirth.getText(),
-                    comboBoxGetValue(comboBoxGender, gender),
-                    comboBoxGetValue(comboBoxCountry, countries),
-                    parseInt(textFieldRegion.getText()),
-                    textFieldOutdoors.getText(),
-                    textFieldDateOfCommission.getText(), textFieldPlaceOfCommission.getText(),
-                    textFieldDateOfInitiation.getText(), comboBoxGetValue(comboBoxOfficeOfInitiation, offices),
-                    textFieldNameOfInitiation.getText(), textFieldDateOfPreparingReport.getText(),
-                    comboBoxGetValue(comboBoxOfficeOfPreparingReport, offices),
-                    textFieldNameOfPreparingReport.getText(), comboBoxGetValue(comboBoxArticles, articles),
-                    textFieldDateOfDecision.getText(), textFieldDecision.getText(),
-                    comboBoxGetValue(comboBoxOfficeOfDecision, offices), textFieldNameOfDecision.getText(),
-                    comboBoxGetValue(comboBoxPunishment, punichments), parseInt(textFieldPunishmentSum.getText()),
-                    textFieldDateOfEntryIntoForce.getText(), textFieldDateSentenceEnforcement.getText(),
-                    parseInt(textFieldAmount.getText()));
-            dbHandler.addReferral(id, textFieldDateDeparture.getText(), comboBoxGetValue(comboBoxOfficeDeparture, offices),
-                    textFieldDateArrival.getText(), comboBoxGetValue(comboBoxOfficeArrival, offices));
+            try {
+                dbHandler.createCard(id, textFieldLastName.getText(),
+                        comboBoxGetValue(comboBoxNames, names),
+                        comboBoxGetValue(comboBoxPatronymics, patronymics),
+                        LogControl.checkLessDateNow(textFieldDateOfBirth.getId(), textFieldDateOfBirth.getText()),
+                        comboBoxGetValue(comboBoxGender, gender),
+                        comboBoxGetValue(comboBoxCountry, countries),
+                        parseInt(textFieldRegion.getText()),
+                        textFieldOutdoors.getText(),
+                        LogControl.checkLessDatTimeNow(textFieldDateOfCommission.getId(), textFieldDateOfCommission.getText()), textFieldPlaceOfCommission.getText(),
+                        LogControl.checkAfterDate(textFieldDateOfInitiation.getId(), textFieldDateOfInitiation.getText(), textFieldDateOfCommission.getText().substring(0, 10)),
+                        comboBoxGetValue(comboBoxOfficeOfInitiation, offices),
+                        textFieldNameOfInitiation.getText(),
+                        LogControl.checkAfterDate(textFieldDateOfPreparingReport.getId(),textFieldDateOfPreparingReport.getText(),textFieldDateOfInitiation.getText()),
+                        comboBoxGetValue(comboBoxOfficeOfPreparingReport, offices),
+                        textFieldNameOfPreparingReport.getText(), comboBoxGetValue(comboBoxArticles, articles),
+                        LogControl.checkAfterDate(textFieldDateOfDecision.getId(),textFieldDateOfDecision.getText(), textFieldDateOfPreparingReport.getText()),
+                        textFieldDecision.getText(), comboBoxGetValue(comboBoxOfficeOfDecision, offices), textFieldNameOfDecision.getText(),
+                        comboBoxGetValue(comboBoxPunishment, punichments), parseInt(textFieldPunishmentSum.getText()),
+                        LogControl.checkAfterDate(textFieldDateOfEntryIntoForce.getId(),textFieldDateOfEntryIntoForce.getText(), textFieldDateOfDecision.getText()),
+                        LogControl.checkAfterDate(textFieldDateSentenceEnforcement.getId(), textFieldDateSentenceEnforcement.getText(),textFieldDateOfEntryIntoForce.getText()),
+                        parseInt(textFieldAmount.getText()));
+            dbHandler.addReferral(id, LogControl.checkAfterDate(textFieldDateDeparture.getId(), textFieldDateDeparture.getText(), textFieldDateOfCommission.getText().substring(0, 10)), comboBoxGetValue(comboBoxOfficeDeparture, offices),
+                    LogControl.checkAfterDate(textFieldDateArrival.getId(), textFieldDateArrival.getText(), textFieldDateDeparture.getText()), comboBoxGetValue(comboBoxOfficeArrival, offices));
             AlertSending.alertInfo();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         });
     }
 

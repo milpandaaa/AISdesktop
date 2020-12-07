@@ -41,7 +41,7 @@ public class DatabaseHandler {
                            String date_of_entry_into_force,
                            String date_sentence_enforcement, Integer amount){
         String insert = "INSERT INTO " + Const.CARD_TABLE + "("
-                + Const.CARD_ID + "," + Const.CARD_LAST_NAME + "," + Const.CARD_FIRST_NAME + "," + Const.PATRONYMIC + "," + Const.CARD_DATE_OF_BIRTH + "," + Const.GENDER + "," + Const.CARD_COUNTY + "," + Const.CARD_REGION + "," + Const.CARD_OUTDOORS + ","
+                + Const.CARD_ID + "," + Const.CARD_LAST_NAME + "," + Const.CARD_FIRST_NAME + "," + Const.CARD_PATRONYMIC + "," + Const.CARD_DATE_OF_BIRTH + "," + Const.CARD_GENDER + "," + Const.CARD_COUNTY + "," + Const.CARD_REGION + "," + Const.CARD_OUTDOORS + ","
                 + Const.CARD_DATE_OF_COMMISSION + "," + Const.CARD_PLACE_OF_COMMISSION + "," +
                 Const.CARD_DATE_OF_INITIATION + "," + Const.CARD_OFFICE_OF_INITIATION + "," + Const.CARD_NAME_OF_INITIATION + "," +
                 Const.CARD_DATE_OF_PREPARING_REPORT + "," + Const.CARD_OFFICE_OF_PREPARING_REPORT + "," + Const.CARD_NAME_OF_PREPARING_REPORT + "," + Const.CARD_ARTICLE + "," +
