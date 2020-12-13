@@ -18,7 +18,7 @@ public class DatabaseConnection {
     private final static String dbName = "pp";
     private final static String filePath = "C:\\Users\\milpa\\IdeaProjects\\pract\\dump";
 
-    DatabaseConnection() throws SQLException {
+    public DatabaseConnection() throws SQLException {
         try {
             String connectionString = "jdbc:mysql://" + dbHost + ":" + dbPost + "/" + dbName + "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
             Class.forName("com.mysql.cj.jdbc.Driver");

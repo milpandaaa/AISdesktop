@@ -82,7 +82,7 @@ public class ControllerBase extends Controller{
     }
 
     @FXML
-    protected void initialize() throws SQLException, ClassNotFoundException {
+    protected void initialize() throws SQLException {
         if(!isPrivilege()) {
             buttonAddName.setVisible(false);
             buttonAddPatr.setVisible(false);
