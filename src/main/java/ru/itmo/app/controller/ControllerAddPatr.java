@@ -18,7 +18,7 @@ public class ControllerAddPatr{
     @FXML
     public void add() {
         buttonAddPatrs.setOnAction(event ->{
-            dbHandler.addName(textFieldAddPatr.getText());
+            dbHandler.addPatr(textFieldAddPatr.getText());
             AlertSending.alertInfo();
         });
     }

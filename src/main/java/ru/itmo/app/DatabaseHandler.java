@@ -40,6 +40,7 @@ public class DatabaseHandler {
                            String date_of_decision, String decision, Integer office_of_decision, String name_of_decision, Integer punishment, Integer sum,
                            String date_of_entry_into_force,
                            String date_sentence_enforcement, Integer amount){
+        System.out.println(region);
         String insert = "INSERT INTO " + Const.CARD_TABLE + "("
                 + Const.CARD_ID + "," + Const.CARD_LAST_NAME + "," + Const.CARD_FIRST_NAME + "," + Const.CARD_PATRONYMIC + "," + Const.CARD_DATE_OF_BIRTH + "," + Const.CARD_GENDER + "," + Const.CARD_COUNTY + "," + Const.CARD_REGION + "," + Const.CARD_OUTDOORS + ","
                 + Const.CARD_DATE_OF_COMMISSION + "," + Const.CARD_PLACE_OF_COMMISSION + "," +
@@ -122,6 +123,7 @@ public class DatabaseHandler {
         } catch (SQLException e) {
             AlertSending.alertError();
             e.printStackTrace();
+            return;
         }
     }
 
@@ -133,6 +135,7 @@ public class DatabaseHandler {
                          String date_of_decision, String decision, Integer office_of_decision, String name_of_decision, Integer punishment, Integer sum,
                          String date_of_entry_into_force,
                          String date_sentence_enforcement, Integer amount){
+        System.out.println(region);
         String update = "UPDATE " + Const.CARD_TABLE + " SET " +
                 Const.CARD_LAST_NAME + " = ?, " + Const.CARD_FIRST_NAME + " = ?, " + Const.CARD_PATRONYMIC + " = ?, " + Const.CARD_DATE_OF_BIRTH + " = ?, " +
                 Const.CARD_GENDER + " = ?, " + Const.CARD_COUNTY + " = ?, " + Const.CARD_REGION + " = ?, " + Const.CARD_OUTDOORS + " = ?, " +
@@ -174,6 +177,7 @@ public class DatabaseHandler {
         } catch (SQLException e) {
             AlertSending.alertError();
             e.printStackTrace();
+            return;
         }
     }
 

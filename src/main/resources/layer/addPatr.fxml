@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="893.0" style="-fx-background-color: #F4F6FF;" xmlns="http://javafx.com/javafx/8.0.181" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.itmo.app.controller.ControllerAddPatr" >
+<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="893.0" style="-fx-background-color: #F4F6FF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.itmo.app.controller.ControllerAddPatr">
    <center>
             <AnchorPane prefHeight="700.0" prefWidth="893.0" BorderPane.alignment="CENTER">
                <children>
@@ -18,6 +18,11 @@
                             <Font name="Roboto Light" size="14.0" />
                         </font>
                     </Button>
+                   <Text fill="#4F8A8B" layoutX="81.0" layoutY="81.0" nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: #4F8A8B;" text="Новое отчество" textAlignment="CENTER" AnchorPane.leftAnchor="81.0" AnchorPane.topAnchor="64.234375">
+                       <font>
+                           <Font name="Roboto Light" size="16.0" />
+                       </font>
+                   </Text>
                </children>
             </AnchorPane>
    </center>

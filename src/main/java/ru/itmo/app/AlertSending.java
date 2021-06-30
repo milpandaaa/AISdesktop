@@ -13,20 +13,21 @@ public class AlertSending {
         alert.setContentText("Ошибка");
         alert.showAndWait();
     }
-    static public  void alertError(String attribute){
+    static public void alertError(String attribute) throws Exception {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.initStyle(StageStyle.UTILITY);
         alert.setTitle("Error Message");
         alert.setHeaderText(null);
         alert.setContentText("Неправильно введена дата в " + attribute);
         alert.showAndWait();
+        throw new Exception("Неправильно введена дата в " + attribute);
     }
     static public void alertInfo(){
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.initStyle(StageStyle.UTILITY);
         alert.setTitle("Information");
         alert.setHeaderText(null);
-        alert.setContentText("Изменения применены");
+        alert.setContentText("Дейсвитвие прошло успешно");
         alert.showAndWait();
     }
 }

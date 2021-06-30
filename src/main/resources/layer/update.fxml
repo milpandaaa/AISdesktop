@@ -28,11 +28,7 @@
                                 <Font name="Roboto Light" size="14.0" />
                             </font>
                         </TextField>
-                        <TextField fx:id="textFieldRegion" alignment="TOP_LEFT" onAction="#add" prefHeight="30.0" prefWidth="50.0" promptText="Код" style="-fx-background-color: #4F8A8B; -fx-background-radius: 5;" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="385.0">
-                            <font>
-                                <Font name="Roboto Light" size="14.0" />
-                            </font>
-                        </TextField>
+
                         <TextField fx:id="textFieldOutdoors" alignment="TOP_LEFT" onAction="#add" prefHeight="25.0" prefWidth="250.0" promptText="Адрес регистрации" style="-fx-background-color: #4F8A8B; -fx-background-radius: 5;" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="430.0">
                             <font>
                                 <Font name="Roboto Light" size="14.0" />
@@ -106,7 +102,7 @@
                                 <Font name="Roboto Light" size="12.0" />
                             </font></Text>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#99b7b7" height="2.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="120.0" AnchorPane.leftAnchor="370.0" AnchorPane.topAnchor="175.0" />
-                        <TextField fx:id="textFieldadd1" alignment="TOP_LEFT" onAction="#add" prefHeight="25.0" prefWidth="110.0" promptText="Код" style="-fx-background-color: #4F8A8B; -fx-background-radius: 5;" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="385.0">
+                        <TextField fx:id="textFieldRegion" alignment="TOP_LEFT" onAction="#add" prefHeight="25.0" prefWidth="110.0" promptText="Код" style="-fx-background-color: #4F8A8B; -fx-background-radius: 5;" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="385.0">
                             <font>
                                 <Font name="Roboto Light" size="14.0" />
                             </font>

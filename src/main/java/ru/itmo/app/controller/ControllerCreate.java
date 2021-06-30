@@ -122,7 +122,7 @@ public class ControllerCreate extends ControllerSearch {
         }
     }};
 
-    protected static Set<ModelComboBox> names = new TreeSet<ModelComboBox>(Comparator.comparing(ModelComboBox::getName)) {{
+    protected Set<ModelComboBox> names = new TreeSet<ModelComboBox>(Comparator.comparing(ModelComboBox::getName)) {{
         try {
             addAll(initData(Const.NAME_TABLE, Const.NAME_ID, Const.NAME));
         } catch (SQLException throwables) {
@@ -130,7 +130,7 @@ public class ControllerCreate extends ControllerSearch {
         }
     }};
 
-    protected static Set<ModelComboBox> patronymics = new TreeSet<ModelComboBox>(Comparator.comparing(ModelComboBox::getName)) {{
+    protected Set<ModelComboBox> patronymics = new TreeSet<ModelComboBox>(Comparator.comparing(ModelComboBox::getName)) {{
         try {
             addAll(initData(Const.PATRONYMIC_TABLE, Const.PATRONYMIC_ID, Const.PATRONYMIC));
         } catch (SQLException throwables) {
@@ -327,6 +327,7 @@ public class ControllerCreate extends ControllerSearch {
         comboBoxCountry = createComboBox(countries, 60, 340);
         comboBoxOfficeOfInitiation = createComboBox(offices, 360, 255);
         comboBoxArticles = createComboBox(articles, 360, 520);
+        comboBoxArticles.setMaxWidth(200);
         comboBoxOfficeOfDecision = createComboBox(offices, 360, 695);
         comboBoxOfficeArrival = createComboBox(offices, 660, 430);
         comboBoxOfficeDeparture = createComboBox(offices, 660, 340);
@@ -396,7 +397,7 @@ public class ControllerCreate extends ControllerSearch {
             dbHandler.addReferral(id, LogControl.checkAfterDate(textFieldDateDeparture.getId(), textFieldDateDeparture.getText(), textFieldDateOfCommission.getText().substring(0, 10)), comboBoxGetValue(comboBoxOfficeDeparture, offices),
                     LogControl.checkAfterDate(textFieldDateArrival.getId(), textFieldDateArrival.getText(), textFieldDateDeparture.getText()), comboBoxGetValue(comboBoxOfficeArrival, offices));
             AlertSending.alertInfo();
-            } catch (ParseException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         });
